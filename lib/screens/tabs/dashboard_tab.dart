@@ -122,7 +122,7 @@ class DashboardTab extends StatelessWidget {
                           initialAngleInDegree: 0,
                           chartType: ChartType.disc,
                           ringStrokeWidth: 32,
-                          centerText: "Products",
+                          centerText: "Purchased",
                           legendOptions: const LegendOptions(
                             showLegendsInRow: false,
                             legendPosition: LegendPosition.right,
