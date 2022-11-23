@@ -33,6 +33,9 @@ class SellerAccountTab extends StatelessWidget {
                       // column to set the name
                       DataColumn(
                           label: NormalText(
+                              label: 'No.', fontSize: 16, color: Colors.black)),
+                      DataColumn(
+                          label: NormalText(
                               label: 'Profile',
                               fontSize: 16,
                               color: Colors.black)),
@@ -62,6 +65,12 @@ class SellerAccountTab extends StatelessWidget {
                       // row to set the values
                       for (int i = 0; i < 50; i++)
                         DataRow(cells: [
+                          DataCell(
+                            NormalText(
+                                label: i.toString(),
+                                fontSize: 14,
+                                color: Colors.grey),
+                          ),
                           const DataCell(
                             CircleAvatar(
                               minRadius: 20,
