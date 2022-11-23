@@ -2,6 +2,10 @@ import 'package:easy_sidemenu/easy_sidemenu.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marketdo_admin/constant/colors.dart';
+import 'package:marketdo_admin/screens/tabs/dashboard_tab.dart';
+import 'package:marketdo_admin/screens/tabs/order_tab.dart';
+import 'package:marketdo_admin/screens/tabs/products_tab.dart';
+import 'package:marketdo_admin/screens/tabs/seller_account_tab.dart';
 
 import '../widgets/text_widget.dart';
 
@@ -97,11 +101,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SideMenuItem(
                   priority: 1,
-                  title: 'Seller Accounts',
+                  title: 'Accounts',
                   onTap: () {
                     page.jumpToPage(1);
                   },
-                  icon: const Icon(Icons.groups_rounded),
+                  icon: const Icon(Icons.account_box_rounded),
                 ),
                 SideMenuItem(
                   priority: 2,
@@ -126,42 +130,10 @@ class _HomeScreenState extends State<HomeScreen> {
             child: PageView(
               controller: page,
               children: [
-                Container(
-                  color: Colors.white,
-                  child: const Center(
-                    child: Text(
-                      'Dashboard',
-                      style: TextStyle(fontSize: 35),
-                    ),
-                  ),
-                ),
-                Container(
-                  color: Colors.white,
-                  child: const Center(
-                    child: Text(
-                      'Seller Acounts',
-                      style: TextStyle(fontSize: 35),
-                    ),
-                  ),
-                ),
-                Container(
-                  color: Colors.white,
-                  child: const Center(
-                    child: Text(
-                      'Orders',
-                      style: TextStyle(fontSize: 35),
-                    ),
-                  ),
-                ),
-                Container(
-                  color: Colors.white,
-                  child: const Center(
-                    child: Text(
-                      'Products',
-                      style: TextStyle(fontSize: 35),
-                    ),
-                  ),
-                ),
+                DashboardTab(),
+                const SellerAccountTab(),
+                const OrderTab(),
+                const ProductsTab()
               ],
             ),
           ),
