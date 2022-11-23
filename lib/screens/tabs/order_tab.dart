@@ -15,7 +15,8 @@ class OrderTab extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            BoldText(label: '       Dashboard', fontSize: 32, color: primary),
+            BoldText(
+                label: '       Customer Orders', fontSize: 32, color: primary),
             const SizedBox(
               height: 100,
             ),
