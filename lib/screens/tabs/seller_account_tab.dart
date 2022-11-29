@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:marketdo_admin/constant/colors.dart';
 
@@ -13,109 +14,138 @@ class SellerAccountTab extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.only(top: 20, left: 20),
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              BoldText(label: '       Accounts', fontSize: 32, color: primary),
-              const SizedBox(
-                height: 50,
-              ),
-              Center(
-                child: Container(
-                  height: 500,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: primary, width: 2),
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.white),
-                  child: SingleChildScrollView(
-                    child: DataTable(
-                      // datatable widget
-                      columns: [
-                        // column to set the name
-                        DataColumn(
-                            label: NormalText(
-                                label: 'No.',
-                                fontSize: 16,
-                                color: Colors.black)),
-                        DataColumn(
-                            label: NormalText(
-                                label: 'Profile',
-                                fontSize: 16,
-                                color: Colors.black)),
-                        DataColumn(
-                            label: NormalText(
-                                label: 'Name',
-                                fontSize: 16,
-                                color: Colors.black)),
-                        DataColumn(
-                            label: NormalText(
-                                label: 'Email',
-                                fontSize: 16,
-                                color: Colors.black)),
-                        DataColumn(
-                            label: NormalText(
-                                label: 'Contact Number',
-                                fontSize: 16,
-                                color: Colors.black)),
-                        DataColumn(
-                            label: NormalText(
-                                label: 'Address',
-                                fontSize: 16,
-                                color: Colors.black)),
-                      ],
+          child: StreamBuilder<QuerySnapshot>(
+              stream:
+                  FirebaseFirestore.instance.collection('Users').snapshots(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (snapshot.hasError) {
+                  print(snapshot.error);
+                  return const Center(child: Text('Error'));
+                }
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  print('waiting');
+                  return const Padding(
+                    padding: EdgeInsets.only(top: 50),
+                    child: Center(
+                        child: CircularProgressIndicator(
+                      color: Colors.black,
+                    )),
+                  );
+                }
 
-                      rows: [
-                        // row to set the values
-                        for (int i = 0; i < 50; i++)
-                          DataRow(cells: [
-                            DataCell(
-                              NormalText(
-                                  label: i.toString(),
-                                  fontSize: 14,
-                                  color: Colors.grey),
+                final data = snapshot.requireData;
+                return SizedBox(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      BoldText(
+                          label: '       Accounts',
+                          fontSize: 32,
+                          color: primary),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      Center(
+                        child: Container(
+                          height: 500,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: primary, width: 2),
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.white),
+                          child: SingleChildScrollView(
+                            child: DataTable(
+                              // datatable widget
+                              columns: [
+                                // column to set the name
+                                DataColumn(
+                                    label: NormalText(
+                                        label: 'No.',
+                                        fontSize: 16,
+                                        color: Colors.black)),
+                                DataColumn(
+                                    label: NormalText(
+                                        label: 'Profile',
+                                        fontSize: 16,
+                                        color: Colors.black)),
+                                DataColumn(
+                                    label: NormalText(
+                                        label: 'Name',
+                                        fontSize: 16,
+                                        color: Colors.black)),
+                                DataColumn(
+                                    label: NormalText(
+                                        label: 'Email',
+                                        fontSize: 16,
+                                        color: Colors.black)),
+                                DataColumn(
+                                    label: NormalText(
+                                        label: 'Contact Number',
+                                        fontSize: 16,
+                                        color: Colors.black)),
+                                DataColumn(
+                                    label: NormalText(
+                                        label: 'Address',
+                                        fontSize: 16,
+                                        color: Colors.black)),
+                              ],
+
+                              rows: [
+                                // row to set the values
+                                for (int i = 0; i < snapshot.data!.size; i++)
+                                  DataRow(cells: [
+                                    DataCell(
+                                      NormalText(
+                                          label: i.toString(),
+                                          fontSize: 14,
+                                          color: Colors.grey),
+                                    ),
+                                    DataCell(
+                                      CircleAvatar(
+                                        minRadius: 20,
+                                        maxRadius: 20,
+                                        backgroundColor: Colors.black,
+                                        backgroundImage: NetworkImage(
+                                            data.docs[i]['profilePicture']),
+                                      ),
+                                    ),
+                                    DataCell(
+                                      NormalText(
+                                          label: data.docs[i]['name'],
+                                          fontSize: 14,
+                                          color: Colors.grey),
+                                    ),
+                                    DataCell(
+                                      NormalText(
+                                          label: data.docs[i]['email'],
+                                          fontSize: 14,
+                                          color: Colors.grey),
+                                    ),
+                                    DataCell(
+                                      NormalText(
+                                          label: data.docs[i]['phoneNumber'],
+                                          fontSize: 14,
+                                          color: Colors.grey),
+                                    ),
+                                    DataCell(
+                                      NormalText(
+                                          label: data.docs[i]['address'],
+                                          fontSize: 14,
+                                          color: Colors.grey),
+                                    ),
+                                  ]),
+                              ],
                             ),
-                            const DataCell(
-                              CircleAvatar(
-                                minRadius: 20,
-                                maxRadius: 20,
-                                backgroundColor: Colors.black,
-                              ),
-                            ),
-                            DataCell(
-                              NormalText(
-                                  label: 'Lance Olana',
-                                  fontSize: 14,
-                                  color: Colors.grey),
-                            ),
-                            DataCell(
-                              NormalText(
-                                  label: 'lans@gmail.com',
-                                  fontSize: 14,
-                                  color: Colors.grey),
-                            ),
-                            DataCell(
-                              NormalText(
-                                  label: '09090104355',
-                                  fontSize: 14,
-                                  color: Colors.grey),
-                            ),
-                            DataCell(
-                              NormalText(
-                                  label: 'Impasugong Bukidnon Philippines',
-                                  fontSize: 14,
-                                  color: Colors.grey),
-                            ),
-                          ]),
-                      ],
-                    ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                    ],
                   ),
-                ),
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-            ],
-          ),
+                );
+              }),
         ),
       ),
     );
