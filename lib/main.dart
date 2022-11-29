@@ -1,7 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:marketdo_admin/screens/home_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+          apiKey: "AIzaSyBjivpCdVNxvxjPpBwqSgoeLAk99NsUrc0",
+          appId: "1:408743856582:web:c5c94d57da4a4ac6cb4ac7",
+          messagingSenderId: "408743856582",
+          projectId: "market-do"));
   runApp(const MyApp());
 }
 
