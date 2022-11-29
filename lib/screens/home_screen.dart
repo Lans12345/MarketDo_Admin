@@ -60,8 +60,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(
                         width: 10,
                       ),
-                      const CircleAvatar(
-                        backgroundColor: blueAccent,
+                      Image.asset(
+                        'assets/logo.png',
+                        height: 40,
                       ),
                       const SizedBox(
                         width: 10,

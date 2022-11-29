@@ -1,27 +1,198 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:marketdo_admin/constant/colors.dart';
 import 'package:marketdo_admin/widgets/text_widget.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:syncfusion_flutter_charts/charts.dart' as fchart;
 
-class DashboardTab extends StatelessWidget {
-  DashboardTab({super.key});
+class DashboardTab extends StatefulWidget {
+  const DashboardTab({super.key});
 
-  Map<String, double> dataMap = {
-    "Snacks": 2,
-    "Fruits": 3,
-    "Vegetables": 5,
-    "Meat": 2,
-  };
+  @override
+  State<DashboardTab> createState() => _DashboardTabState();
+}
 
-  Map<String, double> dataMap1 = {
-    "Snacks": 2,
-    "Fruits": 3,
-    "Vegetables": 5,
-    "Meat": 2,
-  };
+class _DashboardTabState extends State<DashboardTab> {
+  @override
+  void initState() {
+    super.initState();
+
+    getData();
+    getData2();
+    getData3();
+    getData5();
+    getData6();
+    getData7();
+    getData8();
+  }
+
+  late int total1 = 0;
+
+  getData() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Purchases')
+        .where('category', isEqualTo: 'Snacks');
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          total1 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
+  late int total2 = 0;
+
+  getData2() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Purchases')
+        .where('category', isEqualTo: 'Fruits');
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          total2 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
+  late int total3 = 0;
+
+  getData3() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Products')
+        .where('category', isEqualTo: 'Vegetables');
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          total3 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
+  late int total4 = 0;
+
+  getData4() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Products')
+        .where('category', isEqualTo: 'Meat');
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          total4 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
+  late int total5 = 0;
+
+  getData5() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Purchases')
+        .where('category', isEqualTo: 'Snacks');
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          total5 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
+  late int total6 = 0;
+
+  getData6() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Purchases')
+        .where('category', isEqualTo: 'Fruits');
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          total6 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
+  late int total7 = 0;
+
+  getData7() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Products')
+        .where('category', isEqualTo: 'Vegetables');
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          total7 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
+  late int total8 = 0;
+
+  getData8() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Products')
+        .where('category', isEqualTo: 'Meat');
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          total8 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    Map<String, double> dataMap = {
+      "Snacks": total1.toDouble(),
+      "Fruits": total2.toDouble(),
+      "Vegetables": total3.toDouble(),
+      "Meat": total4.toDouble(),
+    };
+
+    Map<String, double> dataMap1 = {
+      "Snacks": total5.toDouble(),
+      "Fruits": total6.toDouble(),
+      "Vegetables": total7.toDouble(),
+      "Meat": total8.toDouble(),
+    };
     final List<ChartData> chartData = [
       ChartData(01, 35),
       ChartData(02, 25),
