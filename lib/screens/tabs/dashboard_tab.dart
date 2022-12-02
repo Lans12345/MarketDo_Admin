@@ -20,6 +20,7 @@ class _DashboardTabState extends State<DashboardTab> {
     getData();
     getData2();
     getData3();
+    getData4();
     getData5();
     getData6();
     getData7();
@@ -89,7 +90,7 @@ class _DashboardTabState extends State<DashboardTab> {
     // Use provider
     var collection = FirebaseFirestore.instance
         .collection('Products')
-        .where('category', isEqualTo: 'Meat');
+        .where('category', isEqualTo: 'Meals');
 
     var querySnapshot = await collection.get();
     if (mounted) {
@@ -145,7 +146,7 @@ class _DashboardTabState extends State<DashboardTab> {
   getData7() async {
     // Use provider
     var collection = FirebaseFirestore.instance
-        .collection('Products')
+        .collection('Purchases')
         .where('category', isEqualTo: 'Vegetables');
 
     var querySnapshot = await collection.get();
@@ -164,8 +165,8 @@ class _DashboardTabState extends State<DashboardTab> {
   getData8() async {
     // Use provider
     var collection = FirebaseFirestore.instance
-        .collection('Products')
-        .where('category', isEqualTo: 'Meat');
+        .collection('Purchases')
+        .where('category', isEqualTo: 'Meals');
 
     var querySnapshot = await collection.get();
     if (mounted) {
@@ -184,14 +185,14 @@ class _DashboardTabState extends State<DashboardTab> {
       "Snacks": total1.toDouble(),
       "Fruits": total2.toDouble(),
       "Vegetables": total3.toDouble(),
-      "Meat": total4.toDouble(),
+      "Meals": total4.toDouble(),
     };
 
     Map<String, double> dataMap1 = {
       "Snacks": total5.toDouble(),
       "Fruits": total6.toDouble(),
       "Vegetables": total7.toDouble(),
-      "Meat": total8.toDouble(),
+      "Meals": total8.toDouble(),
     };
     final List<ChartData> chartData = [
       ChartData(01, 35),
