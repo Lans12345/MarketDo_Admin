@@ -25,6 +25,18 @@ class _DashboardTabState extends State<DashboardTab> {
     getData6();
     getData7();
     getData8();
+    getMonth1();
+    getMonth2();
+    getMonth3();
+    getMonth4();
+    getMonth5();
+    getMonth6();
+    getMonth7();
+    getMonth8();
+    getMonth9();
+    getMonth10();
+    getMonth11();
+    getMonth12();
   }
 
   late int total1 = 0;
@@ -179,6 +191,234 @@ class _DashboardTabState extends State<DashboardTab> {
     }
   }
 
+  late int month1 = 0;
+
+  getMonth1() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Purchases')
+        .where('date', isEqualTo: 1);
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          month1 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
+  late int month2 = 0;
+
+  getMonth2() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Purchases')
+        .where('date', isEqualTo: 2);
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          month2 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
+  late int month3 = 0;
+
+  getMonth3() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Purchases')
+        .where('date', isEqualTo: 3);
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          month3 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
+  late int month4 = 0;
+
+  getMonth4() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Purchases')
+        .where('date', isEqualTo: 4);
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          month4 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
+  late int month5 = 0;
+
+  getMonth5() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Purchases')
+        .where('date', isEqualTo: 5);
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          month5 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
+  late int month6 = 0;
+
+  getMonth6() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Purchases')
+        .where('date', isEqualTo: 6);
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          month6 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
+  late int month7 = 0;
+
+  getMonth7() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Purchases')
+        .where('date', isEqualTo: 7);
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          month7 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
+  late int month8 = 0;
+
+  getMonth8() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Purchases')
+        .where('date', isEqualTo: 8);
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          month8 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
+  late int month9 = 0;
+
+  getMonth9() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Purchases')
+        .where('date', isEqualTo: 9);
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          month1 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
+  late int month10 = 0;
+
+  getMonth10() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Purchases')
+        .where('date', isEqualTo: 10);
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          month10 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
+  late int month11 = 0;
+
+  getMonth11() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Purchases')
+        .where('date', isEqualTo: 11);
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          month11 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
+  late int month12 = 0;
+
+  getMonth12() async {
+    // Use provider
+    var collection = FirebaseFirestore.instance
+        .collection('Purchases')
+        .where('date', isEqualTo: 12);
+
+    var querySnapshot = await collection.get();
+    if (mounted) {
+      setState(() {
+        for (var queryDocumentSnapshot in querySnapshot.docs) {
+          Map<String, dynamic> data = queryDocumentSnapshot.data();
+          month12 = querySnapshot.size;
+        }
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Map<String, double> dataMap = {
@@ -195,18 +435,18 @@ class _DashboardTabState extends State<DashboardTab> {
       "Meals": total8.toDouble(),
     };
     final List<ChartData> chartData = [
-      ChartData(01, 35),
-      ChartData(02, 25),
-      ChartData(03, 12),
-      ChartData(04, 35),
-      ChartData(05, 58),
-      ChartData(06, 12),
-      ChartData(07, 125),
-      ChartData(08, 76),
-      ChartData(09, 1),
-      ChartData(10, 56),
-      ChartData(11, 12),
-      ChartData(12, 65),
+      ChartData(01, month1.toDouble()),
+      ChartData(02, month2.toDouble()),
+      ChartData(03, month3.toDouble()),
+      ChartData(04, month4.toDouble()),
+      ChartData(05, month5.toDouble()),
+      ChartData(06, month6.toDouble()),
+      ChartData(07, month7.toDouble()),
+      ChartData(08, month8.toDouble()),
+      ChartData(09, month9.toDouble()),
+      ChartData(10, month10.toDouble()),
+      ChartData(11, month11.toDouble()),
+      ChartData(12, month12.toDouble()),
     ];
     return Scaffold(
       backgroundColor: Colors.grey[200],
